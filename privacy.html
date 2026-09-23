@@ -24,20 +24,21 @@
   <main class="wrap section">
     <article class="legal">
       <h1>Privacy Policy</h1>
-      <p class="muted">Effective September 13, 2026 · Last updated September 21, 2026</p>
+      <p class="muted">Effective September 13, 2026 · Last updated September 23, 2026</p>
       <p>This policy covers the <strong>Civic Watch</strong> iOS/iPadOS app and related support pages, operated by <strong>Solution Sidekick LLC</strong> (“we”, “us”), 832 Kings Cross Way, Raleigh, NC 27615, USA. Contact: <a href="mailto:joseph@codecreations.net">joseph@codecreations.net</a>.</p>
 
       <h2>1. The short version</h2>
-      <p>We built a multiplayer FPS, not an ad network. We do not sell your personal information. We do not show third-party ads. We do not track you across other companies’ apps. Payments go through Apple. Online lobbies only use what you choose to share for matchmaking. Bot matches work without an account.</p>
+      <p>We built a multiplayer FPS, not an ad network. We do not sell your personal information. We do not show third-party ads. We do not track you across other companies’ apps. Payments go through Apple. Online services use lobby information, installation credentials, and technical request data to connect players and prevent abuse. Bot matches work without an account.</p>
 
       <h2>2. Information we may have</h2>
       <ul>
         <li><strong>Display name</strong> — the name you type for lobby listings and in-match scoreboards, visible to other players in that lobby or match.</li>
         <li><strong>Party codes &amp; lobby listings</strong> — short-lived room codes, player counts, map choice, and host reachability so others can join.</li>
-        <li><strong>Optional install id hash</strong> — a hashed installation credential used to authenticate lobby connections. It identifies the install to the lobby service; it is not an advertising ID.</li>
+        <li><strong>Installation identity</strong> — the app creates a random installation credential and sends it over an encrypted connection to authenticate online requests. The service derives a hash to identify that installation in lobbies and moderation records. Other players receive the hash, not the credential. This is not an advertising ID.</li>
         <li><strong>Gameplay in a match</strong> — positions, shots, and round results exchanged between players (or with bots offline). Online traffic is relayed in memory. We do not keep a permanent world database of your matches.</li>
-        <li><strong>Purchases</strong> — optional operatives and gun finishes are billed by Apple as non-consumable In-App Purchases. Watch Coin packs and Zombies supplies are billed as consumable In-App Purchases. Apple sends the app a receipt so it can unlock or credit what you bought. We never see your full card number. Restore Purchases is in Settings → Profile and restores operatives and finishes. Consumable coins and supplies cannot be restored.</li>
+        <li><strong>Purchases</strong> — optional operatives and gun finishes are billed by Apple as non-consumable In-App Purchases. Watch Coin packs and Zombies supplies are billed as consumable In-App Purchases. Apple sends the app a receipt so it can unlock or credit what you bought. We never see your full card number. Restore Purchases is in Settings → Profile and restores operatives and finishes. Apple’s Restore Purchases does not restore consumables. Coin balances, supplies, and their transaction records are saved on this device; deleting the app or losing its data can lose that balance. The current release does not enable our optional remote wallet service.</li>
         <li><strong>Game Center</strong> — when you sign in, Apple processes your Game Center identity, eligible leaderboard scores, and achievement progress. Sign-in is optional. The app stores progress and pending reports locally to retry interrupted submissions.</li>
+        <li><strong>Player reports and blocking</strong> — reports sent through the game contain the reporter and reported player’s hashed installation identities, party code, selected reason, and time. We use them to investigate abuse and enforce restrictions. Your block list is saved on your device and used to prevent unwanted play with blocked players.</li>
         <li><strong>Support email</strong> — if you write us, we keep the thread long enough to help you.</li>
         <li><strong>Diagnostics</strong> — if you have Apple Analytics / crash reporting enabled, we may receive crash logs and coarse device type so we can fix bugs.</li>
         <li><strong>This website</strong> — GitHub Pages may log standard request metadata (IP, user agent). We do not run tracking cookies or advertising pixels.</li>
@@ -57,19 +58,19 @@
       <ul>
         <li><strong>Apple</strong> — App Store, TestFlight, In-App Purchases, optional Game Center, and optional crash analytics you enable on the device.</li>
         <li><strong>Other players in your match or lobby</strong> — your display name and in-match activity.</li>
-        <li><strong>Google Cloud</strong> — hosts the online lobby registry and gameplay relay (Cloud Run and Firestore). The lobby service may see party listings, hashed install ids, IP addresses, and diagnostic logs needed to keep rooms working. Listings expire when a host stops refreshing (about 70 seconds).</li>
+        <li><strong>Google Cloud</strong> — hosts the online lobby registry and gameplay relay (Cloud Run and Firestore). The lobby service may see party listings, hashed install ids, IP addresses, and diagnostic logs needed to keep rooms working. Listings stop being discoverable when a host stops refreshing (about 70 seconds). Expiry of a listing is not a promise of immediate database deletion.</li>
         <li><strong>GitHub</strong> — hosts this website (GitHub Pages).</li>
       </ul>
       <p>We may disclose information if required by law or to protect people from harm.</p>
 
       <h2>5. Retention</h2>
-      <p>Lobby listings are short-lived and drop when a host stops refreshing. Gameplay relay traffic is not stored as a match recording. Infrastructure logs and support mail may remain after a match ends according to operational need. Purchase entitlements follow Apple’s records. Contact us to request deletion of information we hold.</p>
+      <p>Lobby listings stop being discoverable after about 70 seconds without a host refresh. Gameplay relay traffic is not stored as a match recording. Reports are marked with a 90-day expiry; enforcement records may be retained as needed to prevent abuse. Infrastructure logs, expired records awaiting cleanup, and support mail may remain after a match ends as needed to operate the service, investigate issues, meet legal obligations, or resolve disputes. Purchase entitlements follow Apple’s records; local balances and settings remain on the device until removed. Contact us to request deletion of information we hold.</p>
 
       <h2>6. Your choices</h2>
       <ul>
         <li>Play offline bot matches without joining online lobbies.</li>
         <li>Choose a display name you are comfortable sharing with other players.</li>
-        <li>Report or block another player from the in-match scoreboard or Settings → Profile.</li>
+        <li>Report or block another player from the in-match scoreboard. Manage blocked players in Settings → Profile.</li>
         <li>Restore Apple-purchased operatives and gun finishes in Settings → Profile. Consumable Watch Coins and Zombies supplies cannot be restored.</li>
         <li>Manage Game Center sign-in and privacy in iOS Settings.</li>
         <li>Decline local-network access in iOS Settings if you do not want LAN match discovery.</li>

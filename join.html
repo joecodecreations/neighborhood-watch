@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Join my squad — Civic Watch</title>
+  <meta name="description" content="You've been invited to a Civic Watch party. Open the app to join with the party code."/>
+  <meta name="robots" content="noindex"/>
+  <link rel="stylesheet" href="css/site.css"/>
+  <link rel="icon" href="icon.png"/>
+  <meta property="og:title" content="Join my Civic Watch squad"/>
+  <meta property="og:description" content="Tap to jump straight into the party. Remain Calm. Report Everything."/>
+  <meta property="og:image" content="https://joecodecreations.github.io/neighborhood-watch/assets/hero.png"/>
+  <style>
+    .invite { text-align: center; padding: 56px 0 72px; }
+    .invite .code { font-size: clamp(40px, 12vw, 72px); letter-spacing: .18em; font-weight: 800; margin: 18px 0 8px; }
+    .invite .cta-row { justify-content: center; }
+    .invite .hint { opacity: .75; max-width: 520px; margin: 18px auto 0; }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="./"><img src="icon.png" alt=""/>Civic Watch</a>
+    </div>
+  </header>
+  <main>
+    <section class="wrap invite">
+      <span class="kicker">Party invite</span>
+      <h1>You've been called in.</h1>
+      <div class="code" id="code">------</div>
+      <p class="sub">Party code</p>
+      <div class="cta-row">
+        <a class="btn btn-gold" id="open" href="civicwatch://online">Open in Civic Watch</a>
+        <a class="btn btn-ghost" href="https://testflight.apple.com/join/Fg7yHPDD">Get the app</a>
+      </div>
+      <p class="hint">No app yet? Install it, open <b>Play Online → Join</b> and type the code above.</p>
+    </section>
+  </main>
+  <script>
+    // Same alphabet as PartyCode (no 0/O/1/I).
+    var raw = (new URLSearchParams(location.search).get("code") || "").toUpperCase();
+    var code = raw.replace(/[^ABCDEFGHJKLMNPQRSTUVWXYZ2-9]/g, "").slice(0, 6);
+    if (code.length === 6) {
+      document.getElementById("code").textContent = code;
+      var link = "civicwatch://join/" + code;
+      document.getElementById("open").href = link;
+      // Phones with the app installed jump straight in; others stay here.
+      setTimeout(function () { location.href = link; }, 350);
+    }
+  </script>
+</body>
+</html>
